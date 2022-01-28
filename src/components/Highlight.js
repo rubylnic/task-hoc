@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '.././Highlight.css';
 
-function DetectedComponent(Component) {
+function detectedComponent(Component) {
   return class extends React.Component {
     render() {
       const views = this.props.views;
@@ -46,6 +46,9 @@ function Video(props) {
   )
 };
 
+const PrettifiedVideo = detectedComponent(Video);
+const PrettifiedArticle = detectedComponent(Article);
+
 
 function List(props) {
   return (<div className="video-container">
@@ -54,15 +57,15 @@ function List(props) {
         let PrettifiedComponent;
         switch (item.type) {
           case 'video':
-            PrettifiedComponent = DetectedComponent(Video);
+
             return (
-              <PrettifiedComponent {...item} />
+              <PrettifiedVideo {...item} />
             );
 
           case 'article':
-            PrettifiedComponent = DetectedComponent(Article);
+
             return (
-              <PrettifiedComponent {...item} />
+              <PrettifiedArticle {...item} />
             );
         }
       })
